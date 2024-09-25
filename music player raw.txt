@@ -1,0 +1,209 @@
+let curr = 0;
+const mainBtn = document.querySelector(".mainPlay-btn");
+const forwardBtn = document.querySelector(".forward-btn");
+const backwardBtn = document.querySelector(".backward-btn");
+const song1btn = document.querySelector(".song1")
+const song2btn = document.querySelector(".song2")
+const song3btn = document.querySelector(".song3")
+const song4btn = document.querySelector(".song4")
+const song5btn = document.querySelector(".song5")
+
+let songs = [
+    new Audio('../Lata Mangeshkar Old Jhankar Beats Songs _ Avergree(M4A_128K)_1.mp3'),
+    new Audio("../Aapke Pehlu Mein Aakar _ Mohd. Rafi _ Madan Mohan _ Raja Mehdi Ali Khan _ Mera Saaya - 1966(MP3_160K)_1.mp3"),
+    new Audio("../LATA  GEET MALA  HEERA  Part-1  INDIAN  JHANKAR  O(M4A_128K)_1.mp3"),
+    new Audio("../Mukesh -- Dard Bhare Nagme - OLD (( Jhankar )) VOL(M4A_128K)_1.mp3"),
+    new Audio("../Old Is Gold - Hindi Jhankar Songs - Vol. 20 Sadaba(M4A_128K)_1.mp3"),
+];
+
+function currentPlaying() {
+    if (curr === 0) {
+        if (songs[0].paused) {
+            songs[0].play()
+            songs[1].load()
+            songs[2].load()
+            songs[3].load()
+            songs[4].load()
+            song1btn.classList.remove("fa-play")
+            song1btn.classList.add("fa-pause")
+            song2btn.classList.remove("fa-pause")
+            song2btn.classList.add("fa-play")
+            song3btn.classList.remove("fa-pause")
+            song3btn.classList.add("fa-play")
+            song4btn.classList.remove("fa-pause")
+            song4btn.classList.add("fa-play")
+            song5btn.classList.remove("fa-pause")
+            song5btn.classList.add("fa-play")
+            mainPlay()
+
+        }
+        else {
+            song1btn.classList.remove("fa-pause");
+            song1btn.classList.add("fa-play");
+            songs[0].pause()
+            mainPause()
+        }
+    }
+    else if (curr === 1) {
+        if (songs[1].paused) {
+            songs[1].play()
+            songs[0].load()
+            songs[2].load()
+            songs[3].load()
+            songs[4].load()
+            song2btn.classList.remove("fa-play")
+            song2btn.classList.add("fa-pause")
+            song1btn.classList.remove("fa-pause")
+            song1btn.classList.add("fa-play")
+            song3btn.classList.remove("fa-pause")
+            song3btn.classList.add("fa-play")
+            song4btn.classList.remove("fa-pause")
+            song4btn.classList.add("fa-play")
+            song5btn.classList.remove("fa-pause")
+            song5btn.classList.add("fa-play")
+            mainPlay()
+
+        }
+        else {
+            song2btn.classList.remove("fa-pause");
+            song2btn.classList.add("fa-play");
+            songs[1].pause()
+            mainPause()
+        }
+    }
+    else if (curr === 2) {
+
+        if (songs[2].paused) {
+            songs[2].play()
+            songs[1].load()
+            songs[0].load()
+            songs[3].load()
+            songs[4].load()
+            song3btn.classList.remove("fa-play")
+            song3btn.classList.add("fa-pause")
+            song2btn.classList.remove("fa-pause")
+            song2btn.classList.add("fa-play")
+            song1btn.classList.remove("fa-pause")
+            song1btn.classList.add("fa-play")
+            song4btn.classList.remove("fa-pause")
+            song4btn.classList.add("fa-play")
+            song5btn.classList.remove("fa-pause")
+            song5btn.classList.add("fa-play")
+            mainPlay()
+
+        }
+        else {
+            song3btn.classList.remove("fa-pause");
+            song3btn.classList.add("fa-play");
+            songs[2].pause()
+            mainPause()
+        }
+    }
+    else if (curr === 3) {
+        if (songs[3].paused) {
+            songs[3].play()
+            songs[1].load()
+            songs[0].load()
+            songs[2].load()
+            songs[4].load()
+            song4btn.classList.remove("fa-play")
+            song4btn.classList.add("fa-pause")
+            song3btn.classList.remove("fa-pause")
+            song3btn.classList.add("fa-play")
+            song2btn.classList.remove("fa-pause")
+            song2btn.classList.add("fa-play")
+            song1btn.classList.remove("fa-pause")
+            song1btn.classList.add("fa-play")
+            song5btn.classList.remove("fa-pause")
+            song5btn.classList.add("fa-play")
+            mainPlay()
+
+        }
+        else {
+            song4btn.classList.remove("fa-pause");
+            song4btn.classList.add("fa-play");
+            songs[3].pause()
+            mainPause()
+        }
+    }
+    else if (curr === 4) {
+        if (songs[4].paused) {
+            songs[4].play()
+            songs[1].load()
+            songs[2].load()
+            songs[3].load()
+            songs[0].load()
+            song5btn.classList.remove("fa-play")
+            song5btn.classList.add("fa-pause")
+            song3btn.classList.remove("fa-pause")
+            song3btn.classList.add("fa-play")
+            song2btn.classList.remove("fa-pause")
+            song2btn.classList.add("fa-play")
+            song1btn.classList.remove("fa-pause")
+            song1btn.classList.add("fa-play")
+            song4btn.classList.remove("fa-pause")
+            song4btn.classList.add("fa-play")
+            mainPlay()
+
+        }
+        else {
+            song5btn.classList.remove("fa-pause");
+            song5btn.classList.add("fa-play");
+            songs[4].pause()
+            mainPause()
+        }
+    }
+}
+
+function mainPlay() {
+    mainBtn.classList.remove("fa-play");
+    mainBtn.classList.add("fa-pause");
+}
+function mainPause() {
+    mainBtn.classList.add("fa-play");
+    mainBtn.classList.remove("fa-pause");
+}
+
+mainBtn.addEventListener("click", () => {
+    currentPlaying()
+
+});
+forwardBtn.addEventListener("click", () => {
+    if (curr !== 4) {
+        curr++;
+        currentPlaying()
+
+    }
+})
+backwardBtn.addEventListener("click", () => {
+    if (curr !== 0) {
+        curr--;
+        currentPlaying()
+
+
+    }
+})
+
+song1btn.addEventListener("click", () => {
+    curr = 0;
+    currentPlaying()
+})
+song2btn.addEventListener("click", () => {
+    curr = 1;
+    currentPlaying()
+
+})
+song3btn.addEventListener("click", () => {
+    curr = 2;
+    currentPlaying()
+})
+song4btn.addEventListener("click", () => {
+    curr = 3;
+    currentPlaying()
+})
+song5btn.addEventListener("click", () => {
+    curr = 4;
+    currentPlaying()
+})
+
+
